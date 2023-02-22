@@ -1,7 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <thread>
-#include "../src/container/vector.hpp"
+#include "../src/vector"
 using namespace ministl;
 
 int main() {

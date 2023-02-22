@@ -1,8 +1,8 @@
 #ifndef MINISTL_STRING_H
 #define MINISTL_STRING_H
 
+#include "../container/basic_string.hpp"
 #include "../utils/util.hpp"
-#include "basic_string.hpp"
 
 _MINISTL_BEGIN
 

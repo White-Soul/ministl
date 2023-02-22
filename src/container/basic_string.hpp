@@ -1,7 +1,7 @@
 #ifndef MINISTL_BASIC_STRING_H
 #define MINISTL_BASIC_STRING_H
 
-#include "../algorithm/algorithm.hpp"
+#include "../algorithm/stl_algorithm.hpp"
 #include "../configurator/allocator.hpp"
 #include "../configurator/memory.hpp"
 #include "../functor/functor.hpp"

@@ -1,9 +1,9 @@
 #ifndef MINISTL_QUEUE_H
 #define MINISTL_QUEUE_H
 
-#include "../algorithm/algorithm.hpp"
-#include "../container/deque.hpp"
-#include "../container/vector.hpp"
+#include "../algorithm/stl_algorithm.hpp"
+#include "../container/stl_deque.hpp"
+#include "../container/stl_vector.hpp"
 #include "../utils/util.hpp"
 
 _MINISTL_BEGIN

@@ -1,7 +1,7 @@
 #ifndef MINISTL_VECTOR_H
 #define MINISTL_VECTOR_H
 
-#include "../algorithm/algorithm.hpp"
+#include "../algorithm/stl_algorithm.hpp"
 #include "../configurator/allocator.hpp"
 #include "../iterator/iterator.hpp"
 #include "../utils/exceptdef.hpp"

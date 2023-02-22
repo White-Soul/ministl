@@ -1,10 +1,10 @@
 #ifndef MINISTL_HASHTABLE_H
 #define MINISTL_HASHTABLE_H
 #include "../configurator/allocator.hpp"
-#include "../container/vector.hpp"
 #include "../functor/hash_func.hpp"
 #include "../iterator/iterator.hpp"
 #include "../utils/util.hpp"
+#include "stl_vector.hpp"
 
 _MINISTL_BEGIN
 

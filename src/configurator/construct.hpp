@@ -6,7 +6,7 @@
 
 #include <new>
 #include <type_traits>
-#include "../algorithm/algorithm.hpp"
+#include "../algorithm/stl_algorithm.hpp"
 #include "../utils/util.hpp"
 
 _MINISTL_BEGIN
