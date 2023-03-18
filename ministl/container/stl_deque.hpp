@@ -254,8 +254,8 @@ class deque {
  public:
   bool operator==(const deque& x) const { return map == x.map; }
   // 迭代器操作
-  iterator begin() const { return start; }
-  const_iterator begin() { return start; }
+  iterator begin() { return start; }
+  const_iterator begin() const { return start; }
   iterator end() { return finish; }
   const_iterator end() const { return finish; }
   // r迭代器操作

@@ -55,7 +55,7 @@ struct _rb_tree_base_iterator {
         node = node->left;        // 结果
     } else {                      // 如果没有右子节点，情况2
       base_ptr y = node->parent;  // 找出父节点
-      while (node = y->right) {   // 如果现行节点本身是个右节点
+      while (node == y->right) {   // 如果现行节点本身是个右节点
         node = y;  // 就一直上溯，直到不是右节点为止
         y = y->parent;
       }
@@ -84,6 +84,7 @@ struct _rb_tree_base_iterator {
       node = y;  // 此时父节点即是答案
     }
   }
+
 };
 // RB-tree 的正向迭代器
 template <class Value, class Ref, class Ptr>
@@ -99,7 +100,6 @@ struct _rb_tree_iterator : public _rb_tree_base_iterator {
   _rb_tree_iterator() {}
   _rb_tree_iterator(link_type x) { node = x; }
   _rb_tree_iterator(const iterator& it) { node = it.node; }
-  _rb_tree_iterator(const const_iterator& it) { node = it.node; }
 
   reference operator*() const { return link_type(node)->value_field; }
   pointer operator->() const { return &(operator*()); }
@@ -122,6 +122,13 @@ struct _rb_tree_iterator : public _rb_tree_base_iterator {
     self tmp = *this;
     decrement();
     return tmp;
+  }
+
+  bool operator!=(const iterator& s){
+    return this->node != s.node;
+  }
+  bool operator==(const iterator& s){
+    return this->node == s.node;
   }
 };
 // rb-tree 的const迭代器
@@ -211,7 +218,7 @@ class rb_tree {
     return tmp;
   }
 
-  void destory_node(link_type p) {
+  void destroy_node(link_type p) {
     destroy(&p->value_field);
     put_node(p);
   }
@@ -368,7 +375,7 @@ class rb_tree {
     }
   }
   // erase
-  size_type erase(link_type x) {
+  size_type erase(const link_type& x) {
     _erase(x);
     return node_count;
   }
@@ -495,7 +502,7 @@ rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::_insert(base_ptr x_,
   link_type y = (link_type)y_;
   link_type z;
   // key_compare是键值大小比较
-  if (y == header || x != 0 || key_compare(KeyOfValue()(x), key(y))) {
+  if (y == header || x != 0 || key_compare(KeyOfValue()(v), key(y))) {
     z = create_node(v);
     left(y) = z;  // 这使得当y为header时，leftmost = z
     if (y == header) {
@@ -596,7 +603,7 @@ void rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::_erase(link_type x) {
     if (root() == x) {
       root() = son;
     }
-    destory_node(x);
+    destroy_node(x);
     --node_count;
   } else {
     iterator it = iterator(x);

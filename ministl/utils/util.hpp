@@ -24,6 +24,7 @@ struct pair {
 
   pair() : first(T1()), second(T2()) {}
   pair(const T1& a, const T2& b) : first(a), second(b) {}
+  pair(const pair<T1,T2> & p) : first(p.first), second(p.second){}
 };
 
 _MINISTL_END
